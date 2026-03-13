@@ -1,0 +1,11 @@
+.container {
+    width: 100%;
+    position: relative;
+    padding: var(--padding-sm) 0;
+}
+
+.image {
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius-md);
+}

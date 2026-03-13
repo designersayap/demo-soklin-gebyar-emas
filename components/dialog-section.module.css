@@ -1,0 +1,237 @@
+/* Shared Dialog Layout */
+.wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.triggerWrapper {
+    display: inline-block;
+}
+
+.dialog {
+    background-color: var(--background-neutral--default);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow--md);
+    width: 100%;
+    max-height: 80vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    animation: scaleIn 0.2s ease-out;
+    padding-bottom: var(--padding-sm);
+}
+
+/* Controls & Content */
+.closeButton {
+    position: sticky;
+    top: var(--padding-xs);
+    align-self: flex-end;
+    margin-right: var(--padding-xs);
+    margin-bottom: calc(var(--size-button-sm) * -1);
+    z-index: 20;
+    background: var(--background-neutral--default);
+    border: none;
+    cursor: pointer;
+    width: var(--size-button-sm);
+    height: var(--size-button-sm);
+    flex-shrink: 0;
+    border-radius: var(--border-radius-round);
+    color: var(--content-neutral--caption);
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow--sm);
+}
+
+.closeButton:hover {
+    background-color: var(--background-neutral--default);
+    color: var(--content-neutral--body);
+}
+
+.textContainer {
+    padding: var(--padding-md) var(--padding-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.title {
+    margin: 0;
+    color: var(--content-neutral--body);
+}
+
+.description {
+    margin: 0;
+    color: var(--content-neutral--body);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Dialog Default (List Variant) */
+.imageContainer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-neutral--neutral-subtle);
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 var(--padding-md);
+    gap: var(--gap-xs);
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    padding: var(--padding-sm) var(--padding-sm);
+    text-decoration: none;
+    color: var(--content-neutral--body);
+    transition: background-color 0.2s;
+    border: 1px solid var(--stroke-neutral--neutral);
+    border-radius: var(--border-radius-md);
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.lastItem {
+    border-bottom: none;
+}
+
+.listItem:hover {
+    background-color: var(--background-neutral--neutral-subtle);
+}
+
+.itemIcon {
+    width: var(--size-button-md);
+    height: var(--size-button-md);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.itemContent {
+    flex: 1;
+    font-family: var(--font-family-body);
+    font-size: var(--typography-font-size-paragraph-md);
+    color: var(--content-neutral--title-default);
+}
+
+.itemArrow {
+    color: var(--content-neutral--caption);
+    width: var(--size-icon-md);
+    height: var(--size-icon-md);
+}
+
+/* Dialog Accordion Variant */
+.accordionContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 var(--padding-md);
+}
+
+.accordionItem {
+    background: none;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid var(--stroke-neutral--neutral);
+}
+
+.accordionItem:last-child {
+    border-bottom: none;
+}
+
+.accordionHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-md);
+    width: 100%;
+    padding: var(--padding-md) 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordionTitle {
+    flex: 1;
+    color: var(--content-neutral--body);
+    font-weight: 600;
+}
+
+.iconContainer {
+    width: var(--size-icon-lg);
+    height: var(--size-icon-lg);
+    border-radius: var(--border-radius-round);
+    background-color: var(--background-neutral--default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s;
+}
+
+.accordionIcon {
+    width: var(--size-icon-sm);
+    height: var(--size-icon-sm);
+    color: var(--content-neutral--default-invert);
+}
+
+.accordionContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.accordionContentOpen {
+    grid-template-rows: 1fr;
+}
+
+.accordionInner {
+    position: relative;
+    min-height: 0;
+    padding-left: calc(var(--size-icon-lg) + var(--gap-md));
+    padding-bottom: 0;
+    padding-right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, padding-bottom 0.3s ease;
+    color: var(--content-neutral--caption);
+}
+
+.accordionContentOpen .accordionInner {
+    opacity: 1;
+    padding-bottom: var(--padding-md);
+}
